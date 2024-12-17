@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romans 1 & 2 - Bible App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .verse {
+            margin-bottom: 10px;
+        }
+        .verse-number {
+            font-weight: bold;
+            color: #555;
+        }
+        #bible-text {
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Romans - Bible App</h1>
+    <div class="nav-buttons">
+        <button onclick="loadChapter(1)">Romans 1</button>
+        <button onclick="loadChapter(2)">Romans 2</button>
+    </div>
+    <h2 id="chapter-title">Romans 1</h2>
+    <div id="bible-text"></div>
+
+    <script>
+        // Bible Text Data
+        const romans = {
+            1: [
+                { number: 1, text: "Paul, a servant of Jesus Christ, called to be an apostle, separated unto the gospel of God," },
+                { number: 2, text: "Which he had promised afore by his prophets in the holy scriptures," },
+                { number: 3, text: "Concerning his Son Jesus Christ our Lord, which was made of the seed of David according to the flesh;" },
+                { number: 4, text: "And declared to be the Son of God with power, according to the spirit of holiness, by the resurrection from the dead:" },
+                { number: 5, text: "By whom we have received grace and apostleship, for obedience to the faith among all nations, for his name:" },
+                { number: 6, text: "Among whom are ye also the called of Jesus Christ:" },
+                { number: 7, text: "To all that be in Rome, beloved of God, called to be saints: Grace to you and peace from God our Father, and the Lord Jesus Christ." },
+                { number: 8, text: "First, I thank my God through Jesus Christ for you all, that your faith is spoken of throughout the whole world." },
+                { number: 16, text: "For I am not ashamed of the gospel of Christ: for it is the power of God unto salvation to every one that believeth; to the Jew first, and also to the Greek." },
+                { number: 32, text: "Who knowing the judgment of God, that they which commit such things are worthy of death, not only do the same, but have pleasure in them that do them." }
+            ],
+            2: [
+                { number: 1, text: "Therefore thou art inexcusable, O man, whosoever thou art that judgest: for wherein thou judgest another, thou condemnest thyself; for thou that judgest doest the same things." },
+                { number: 2, text: "But we are sure that the judgment of God is according to truth against them which commit such things." },
+                { number: 3, text: "And thinkest thou this, O man, that judgest them which do such things, and doest the same, that thou shalt escape the judgment of God?" },
+                { number: 4, text: "Or despisest thou the riches of his goodness and forbearance and longsuffering; not knowing that the goodness of God leadeth thee to repentance?" },
+                { number: 5, text: "But after thy hardness and impenitent heart treasurest up unto thyself wrath against the day of wrath and revelation of the righteous judgment of God;" },
+                { number: 6, text: "Who will render to every man according to his deeds:" },
+                { number: 11, text: "For there is no respect of persons with God." },
+                { number: 13, text: "For not the hearers of the law are just before God, but the doers of the law shall be justified." },
+                { number: 29, text: "But he is a Jew, which is one inwardly; and circumcision is that of the heart, in the spirit, and not in the letter; whose praise is not of men, but of God." }
+            ]
+        };
+
+        // Function to load and display a chapter
+        function loadChapter(chapterNumber) {
+            const container = document.getElementById("bible-text");
+            const chapterTitle = document.getElementById("chapter-title");
+
+            // Set chapter title
+            chapterTitle.innerText = `Romans ${chapterNumber}`;
+
+            // Clear previous content
+            container.innerHTML = "";
+
+            // Load and display the verses
+            romans[chapterNumber].forEach(verse => {
+                const verseDiv = document.createElement("div");
+                verseDiv.classList.add("verse");
+                verseDiv.innerHTML = `<span class="verse-number">${verse.number}</span> ${verse.text}`;
+                container.appendChild(verseDiv);
+            });
+        }
+
+        // Load Romans 1 by default
+        loadChapter(1);
+    </script>
+</body>
+</html>
